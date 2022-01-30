@@ -56,12 +56,18 @@ public class BoardView extends FrameLayout {
     private int originalPosition = -1;
     private int originalItemPosition = -1;
 
+    private int currentPosition = 0;
+
     public void setBackgroundColor(int color){
         background_color = color;
     }
 
     public int getBackgroundColor(){
         return background_color;
+    }
+
+    public int getCurrentColumnPosition() {
+        return currentPosition;
     }
 
     private DoneListener mDoneCallback = new DoneListener() {
@@ -360,6 +366,7 @@ public class BoardView extends FrameLayout {
                     }
                     int x = scrollX+location[0]+offset;
                     int pos = getPositionInListX(x,mParentLayout);
+                    this.currentPosition = pos;
                     scrollToColumn(pos,true);
                 }
             }
